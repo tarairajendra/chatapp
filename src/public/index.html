@@ -27,6 +27,17 @@
   <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
   <script>
     const sock = io()
+
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (input.value) {
+        sock.emit('message', input.value);
+        input.value = '';
+      }
+    })
   </script>
 </body>
 </html>

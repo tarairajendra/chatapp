@@ -24,7 +24,10 @@ app.get('/', (req, res) => {
 io.on('connection', sock => {
   console.log(`connected socket id: ${sock.id}`)
 
-
+  sock.on('message', msg => {
+    console.log(`Messge: ${msg}`)
+    io.emit(msg)
+  })
 
   sock.on('disconnect', () => {
     console.log(`socket disconnected: ${sock.id}`)
