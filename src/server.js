@@ -26,7 +26,7 @@ io.on('connection', sock => {
 
   sock.on('message', msg => {
     console.log(`Messge: ${msg}`)
-    io.emit(msg)
+    io.emit('chat-message', msg)
   })
 
   sock.on('disconnect', () => {
